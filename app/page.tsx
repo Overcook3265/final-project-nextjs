@@ -4,7 +4,10 @@ import styles from './page.module.scss';
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1>What just happened?</h1>
+      <div className={styles.wrapper1}>
+        <h1>What just happened?</h1>
+        <button className={styles.button}>Explore</button>
+      </div>
     </main>
   );
 }
