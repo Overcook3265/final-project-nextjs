@@ -4,7 +4,7 @@ import styles from './page.module.scss';
 
 type Props = { returnTo?: string | string[] };
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   return (

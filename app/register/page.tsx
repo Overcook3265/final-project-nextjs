@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import LoginForm from './LoginForm';
 import styles from './page.module.scss';
+import RegisterForm from './RegisterForm';
 
 export default function RegisterPage() {
-  return <LoginForm />;
+  return <RegisterForm />;
 }
