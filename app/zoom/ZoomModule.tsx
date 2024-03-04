@@ -11,11 +11,11 @@ import styles from './page.module.scss';
 export default function ZoomModule() {
   useEffect(() => {
     const options = {
-      maxScale: 100,
-      bounds: true,
-      // if you need slider
+      maxScale: 50,
+      initScale: 50,
+      minScale: 0.2,
+      bounds: false,
       slider: true,
-      // if you need zoomer
       zoomer: true,
     };
     new Zoomist('.zoomist-container', options);
