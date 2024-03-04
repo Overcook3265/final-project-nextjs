@@ -24,6 +24,7 @@ export default function RootLayout({
       <body className={plex.className}>
         <header>
           <nav>
+            <Link href="/zoom">Zoom</Link>
             <Link href="/">Home</Link>
             <Link href="/register">Register</Link>
           </nav>

@@ -5,8 +5,9 @@ import styles from './page.module.scss';
 type Props = { returnTo?: string | string[] };
 
 export default function RegisterForm() {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <main className={styles.main}>
       <div className={styles.wrapper1}>
@@ -15,7 +16,7 @@ export default function RegisterForm() {
           <label>
             <input
               className={styles.input}
-              // onChange={(event) => setUsername(event.currentTarget.value)}
+              onChange={(event) => setUsername(event.currentTarget.value)}
             />
             Username
           </label>
