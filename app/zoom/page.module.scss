@@ -24,6 +24,17 @@
   border-style: solid;
   z-index: 1000;
   pointer-events: none;
+  animation: color_change 2s 1;
+}
+
+@keyframes color_change {
+  from {
+    color: black;
+  }
+
+  to {
+    color: white;
+  }
 }
 
 .button {

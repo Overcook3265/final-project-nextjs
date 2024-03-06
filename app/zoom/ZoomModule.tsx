@@ -11,8 +11,8 @@ import styles from './page.module.scss';
 export default function ZoomModule() {
   useEffect(() => {
     const options = {
-      maxScale: 50,
-      initScale: 50,
+      maxScale: 100,
+      initScale: 25,
       minScale: 0.2,
       bounds: false,
       slider: true,
