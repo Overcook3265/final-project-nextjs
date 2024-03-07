@@ -27,6 +27,7 @@ export default function RootLayout({
             <Link href="/zoom">Zoom</Link>
             <Link href="/">Home</Link>
             <Link href="/register">Register</Link>
+            <Link href="/login">Login</Link>
           </nav>
         </header>
         <main>{children}</main>
