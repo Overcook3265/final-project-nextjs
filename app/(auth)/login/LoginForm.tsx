@@ -1,10 +1,11 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { User } from '../../../database/users';
 import ErrorMessage from '../../../ErrorMessage';
 import styles from './page.module.scss';
 
-// type Props = { returnTo?: string | string[] };
+type Props = { returnTo?: string | string[] };
 
 export type LoginResponseBodyPost =
   | {
@@ -14,11 +15,12 @@ export type LoginResponseBodyPost =
       errors: { message: string }[];
     };
 
-export default function LoginForm() {
+export default function LoginForm(props: Props) {
   // define the variables
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
+  const router = useRouter();
 
   // login handler function
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
@@ -44,6 +46,13 @@ export default function LoginForm() {
       setErrors(data.errors);
       return;
     }
+
+    router.push(`/`);
+    if (props.returnTo) {
+      // console.log('Checks Return to: ', props.returnTo);
+      router.push(props.returnTo);
+    }
+    router.refresh();
   }
   return (
     <main className={styles.main}>

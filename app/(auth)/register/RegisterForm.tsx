@@ -1,14 +1,21 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import ErrorMessage from '../../../ErrorMessage';
+import { RegisterResponseBodyPost } from '../api/register/route';
 import styles from './page.module.scss';
 
 type Props = { returnTo?: string | string[] };
 
-export default function RegisterForm() {
+export default function RegisterForm(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
 
-  async function handleRegister() {
+  const router = useRouter();
+
+  async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     // fetch method to post data to the server
     // define the route where to post it
     const response = await fetch('api/register', {
@@ -24,8 +31,18 @@ export default function RegisterForm() {
       },
     });
 
-    const data = response.json;
-    console.log('Data: ', data);
+    const data: RegisterResponseBodyPost = await response.json();
+    if ('errors' in data) {
+      setErrors(data.errors);
+      return;
+    }
+    // This is not the secure way of doing returnTo
+    router.push(`/`);
+    if (props.returnTo) {
+      // console.log('Checks Return to: ', props.returnTo);
+      router.push(props.returnTo);
+    }
+    router.refresh();
   }
 
   return (
@@ -54,6 +71,11 @@ export default function RegisterForm() {
           </label>
           <br />
           <button className={styles.button}>Register</button>
+          {errors.map((error) => (
+            <div className="error" key={`error-${error.message}`}>
+              <ErrorMessage>{error.message}</ErrorMessage>
+            </div>
+          ))}
         </form>
       </div>
     </main>
