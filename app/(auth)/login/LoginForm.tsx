@@ -1,17 +1,30 @@
 'use client';
 import { useState } from 'react';
+import { User } from '../../../database/users';
+import ErrorMessage from '../../../ErrorMessage';
 import styles from './page.module.scss';
 
-type Props = { returnTo?: string | string[] };
+// type Props = { returnTo?: string | string[] };
+
+export type LoginResponseBodyPost =
+  | {
+      user: Pick<User, 'username'>;
+    }
+  | {
+      errors: { message: string }[];
+    };
 
 export default function LoginForm() {
+  // define the variables
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
 
+  // login handler function
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     // fetch method to post data to the server
-    // define the route where to post it
+    // define the route where to check
     const response = await fetch('api/login', {
       method: 'POST',
       // content of the data
@@ -21,14 +34,17 @@ export default function LoginForm() {
       }),
       // this is needed just in case a user has an old browser
       headers: {
-        'Content-type': 'application.json',
+        'Content-type': 'application/json',
       },
     });
 
-    const data = response.json;
-    // console.log('Data: ', data);
-  }
+    const data: LoginResponseBodyPost = await response.json();
 
+    if ('errors' in data) {
+      setErrors(data.errors);
+      return;
+    }
+  }
   return (
     <main className={styles.main}>
       <div className={styles.wrapper1}>
@@ -55,6 +71,11 @@ export default function LoginForm() {
           </label>
           <br />
           <button className={styles.button}>Login</button>
+          {errors.map((error) => (
+            <div className="error" key={`error-${error.message}`}>
+              <ErrorMessage>{error.message}</ErrorMessage>
+            </div>
+          ))}
         </form>
       </div>
     </main>
