@@ -2,6 +2,7 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import Link from 'next/link';
+import LogoutButton from './(auth)/api/logout/LogoutButton';
 
 const plex = IBM_Plex_Mono({
   weight: '400',
@@ -28,6 +29,7 @@ export default function RootLayout({
             <Link href="/">Home</Link>
             <Link href="/register">Register</Link>
             <Link href="/login">Login</Link>
+            <LogoutButton />
           </nav>
         </header>
         <main>{children}</main>

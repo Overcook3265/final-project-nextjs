@@ -1,11 +1,15 @@
+import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
+import { cookies } from 'next/headers';
 // setting up the API to allow our users to register
 import { NextRequest, NextResponse } from 'next/server';
+import { createSessionInsecure } from '../../../../database/sessions';
 import {
   getUserWithPasswordHashByUsernameInsecure,
   User,
 } from '../../../../database/users';
 import { userSchema } from '../../../../migrations/00000-createTableUsers';
+import { secureCookieOptions } from '../../../util/cookies';
 
 // define type
 export type LoginResponseBodyPost =
@@ -58,7 +62,7 @@ export async function POST(
     userWithPasswordHash.passwordHash,
   );
 
-  console.log(isPasswordValid, result.data.password);
+  // console.log(isPasswordValid, result.data.password);
 
   if (!isPasswordValid) {
     return NextResponse.json(
@@ -68,6 +72,19 @@ export async function POST(
       },
     );
   }
+  // 5. Create a token
+  const token = crypto.randomBytes(100).toString('base64');
+
+  // 6. Create the session record
+  const session = await createSessionInsecure(userWithPasswordHash.id, token);
+  console.log('Session: ', session);
+
+  // console.log('Token: ', token);
+  cookies().set({
+    name: 'sessionToken',
+    value: session.token,
+    ...secureCookieOptions,
+  });
 
   return NextResponse.json({
     user: {
