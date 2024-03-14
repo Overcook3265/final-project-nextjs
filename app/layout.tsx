@@ -29,6 +29,7 @@ export default function RootLayout({
             <Link href="/">Home</Link>
             <Link href="/register">Register</Link>
             <Link href="/login">Login</Link>
+            <Link href="/newpost">New Post</Link>
             <LogoutButton />
           </nav>
         </header>

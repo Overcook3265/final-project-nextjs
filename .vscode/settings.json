@@ -9,5 +9,6 @@
     "javascript",
     "typescriptreact"
   ],
-  "cSpell.words": ["zoomer", "Zoomer", "zoomist", "Zoomist"]
+  "cSpell.words": ["zoomer", "Zoomer", "zoomist", "Zoomist"],
+  "cSpell.ignoreWords": ["colorwrapper", "inputtitle"]
 }
