@@ -23,7 +23,6 @@ export type LoginResponseBodyPost =
 export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<LoginResponseBodyPost>> {
-  // Task: Implement the user login workflow
   // 1. Get the user data from the request
   const body = await request.json();
 

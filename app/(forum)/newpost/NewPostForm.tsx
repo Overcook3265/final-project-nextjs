@@ -9,6 +9,34 @@ export default function NewPostForm() {
   const [isOpChanced, setIsOpChanced] = useState('');
   const [postTimestamp, setPostTimestamp] = useState('');
   const [rating, setRating] = useState('');
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
+
+  async function handlePost(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // fetch method to post data to the server
+    // define the route where to post it
+    const response = await fetch('api/post', {
+      method: 'POST',
+      // content of the data
+      body: JSON.stringify({
+        postTitle,
+        postText,
+        isOpChanced,
+        postTimestamp,
+        rating,
+      }),
+      // this is needed just in case a user has an old browser
+      headers: {
+        'Content-type': 'application.json',
+      },
+    });
+
+    const data: RegisterResponseBodyPost = await response.json();
+    if ('errors' in data) {
+      setErrors(data.errors);
+      return;
+    }
+  }
 
   return (
     <main className={styles.main}>
@@ -16,7 +44,7 @@ export default function NewPostForm() {
         <h1>Post your experience</h1>
         <div className={styles.colorwrapper}>
           <form
-            // onSubmit={async (event) => await handleRegister(event)}
+            onSubmit={async (event) => await handlePost(event)}
             className={styles.form}
           >
             <label>
@@ -31,8 +59,10 @@ export default function NewPostForm() {
             Rate the encounter
             <label>
               <input
-                className={styles.input}
+                className={styles.inputrating}
                 max={10}
+                min={0}
+                type="number"
                 onChange={(event) => setRating(event.currentTarget.value)}
               />
               /10

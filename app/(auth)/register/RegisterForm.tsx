@@ -48,7 +48,7 @@ export default function RegisterForm(props: Props) {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper1}>
-        <h1>Register here</h1>
+        <h1 className={styles.title}>Register here</h1>
         <form
           onSubmit={async (event) => await handleRegister(event)}
           className={styles.form}

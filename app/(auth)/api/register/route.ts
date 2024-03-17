@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
-// setting up the API to allow our users to register
 import { NextRequest, NextResponse } from 'next/server';
 import { createSessionInsecure } from '../../../../database/sessions';
 import {
@@ -24,7 +23,6 @@ export type RegisterResponseBodyPost =
 export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<RegisterResponseBodyPost>> {
-  // Task: Implement the user registration workflow
   // 1. Get the user data from the request
   const body = await request.json();
 

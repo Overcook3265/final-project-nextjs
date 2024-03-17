@@ -21,10 +21,16 @@
   top: center;
   left: center;
   padding: 1rem;
-  border-style: solid;
+  // border-style: solid;
   z-index: 1000;
   pointer-events: none;
   animation: color_change 2s 1;
+  text-align: center;
+}
+
+.sub {
+  margin-top: 0.3rem;
+  font-size: small;
 }
 
 @keyframes color_change {
