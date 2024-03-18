@@ -30,6 +30,12 @@
 
 .h1 {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.imageright {
+  float: right;
+  margin-left: 2rem;
 }
 
 .textcenter {
@@ -55,6 +61,14 @@
 .wrapper2 {
   height: 80vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wrapper3 {
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
