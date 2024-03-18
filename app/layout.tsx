@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import Link from 'next/link';
 import LogoutButton from './(auth)/api/logout/LogoutButton';
+import { Providers } from './providers';
 
 const plex = IBM_Plex_Mono({
   weight: '400',
@@ -33,7 +34,7 @@ export default function RootLayout({
             <LogoutButton />
           </nav>
         </header>
-        <main>{children}</main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
