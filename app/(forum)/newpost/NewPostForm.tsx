@@ -6,9 +6,10 @@ export default function NewPostForm() {
   const [userId, setUserId] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [postText, setPostText] = useState('');
-  const [isOpChanced, setIsOpChanced] = useState('');
+  const [isOpChanged, setIsOpChanged] = useState(false);
   const [postTimestamp, setPostTimestamp] = useState('');
-  const [rating, setRating] = useState('');
+  // careful: change useState if input is a number or boolean
+  const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState<{ message: string }[]>([]);
 
   async function handlePost(event: React.FormEvent<HTMLFormElement>) {
@@ -21,11 +22,12 @@ export default function NewPostForm() {
       body: JSON.stringify({
         postTitle,
         postText,
-        isOpChanced,
-        postTimestamp,
+        isOpChanged,
+        // postTimestamp,
         rating,
       }),
       // this is needed just in case a user has an old browser
+      // the content type is a json
       headers: {
         'Content-type': 'application.json',
       },
@@ -63,7 +65,9 @@ export default function NewPostForm() {
                 max={10}
                 min={0}
                 type="number"
-                onChange={(event) => setRating(event.currentTarget.value)}
+                onChange={(event) =>
+                  setRating(Number(event.currentTarget.value))
+                }
               />
               /10
             </label>
@@ -71,7 +75,10 @@ export default function NewPostForm() {
               <input
                 type="checkbox"
                 className={styles.input}
-                onChange={(event) => setIsOpChanced(event.currentTarget.value)}
+                onChange={(event) =>
+                  // careful - .checked for checkboxes
+                  setIsOpChanged(event.currentTarget.checked)
+                }
               />
               Opinions Changed?
             </label>

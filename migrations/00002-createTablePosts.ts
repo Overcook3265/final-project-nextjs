@@ -14,6 +14,7 @@ export async function up(sql: Sql) {
       post_text varchar(5000) NOT NULL,
       is_op_changed boolean NOT NULL,
       post_timestamp timestamp NOT NULL DEFAULT now(),
+      -- info: post_timestamp DEFAULT now means: Every time a new item gets created, it gets a new timestamp
       rating integer NOT NULL
     )
   `;

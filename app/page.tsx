@@ -1,4 +1,8 @@
+// 'use client';
+
 import Image from 'next/image';
+import Cavemen from './(parallax)/cavemen';
+import Test from './(parallax)/test';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -14,6 +18,10 @@ export default function Home() {
       </div>
       <div className={styles.wrapper3}>
         <div id="explain" className={styles.textcenter}>
+          <div className={styles.boxwrapper}>
+            <Test />
+          </div>
+          <br />
           The picture you just saw contains <br />
           <b>
             not a single <br />
@@ -34,9 +42,10 @@ export default function Home() {
         <hr />
         <div>
           <h1 className={styles.h1}>What the brain does to the world</h1>
+
           <img
             className={styles.imageright}
-            src={`/images/Caveman_1.jpg`}
+            src={`/images/brain_lineart_white.png`}
             alt="Demonstration of visual filtering"
             width={0}
             height={0}
@@ -49,13 +58,14 @@ export default function Home() {
             <b>trapped, alone, in a thick, dark skull</b>.
             <br />
             <br />
-            So to make sense of what is happening outside, it needs to process
-            the information rushing in from our senses at every second. Most of
-            this information is not immediately relevant for our survival:
-            contemplating the nature of a blade of glass swaying in the wind,
-            and ignoring a lurking predator will not lead to a lot of offspring.
+            To survive, we <b>absolutely need to know</b> what is happening
+            outside, and which of that is <b>relevant to our survival</b>.
             <br />
             <br />
+            {/* To survive, we <b>absolutely need to know</b> what is happening
+            outside, and which of that is <b>relevant to our survival</b>
+            <br />
+            <br /> */}
             So, priorities have to made, unimportant information ignored and a
             world to move and survive in be constructed. What we perceive as
             "vision" is more of an active hallucination by the brain, trying to
@@ -63,6 +73,18 @@ export default function Home() {
             <br />
             <br />
             For vision, this image creation process involves around 30 steps.
+            <br />
+            <br />
+            This means, at any time, we are{' '}
+            <b>only perceiving a tiny sliver </b> of what could be called
+            "reality."
+            <br />
+            <br />
+            <br />
+            <br />
+            <Cavemen />
+            <br />
+            <br />
             <br />
             <br />
             Kindling the energy hidden in matter made in the interiors of

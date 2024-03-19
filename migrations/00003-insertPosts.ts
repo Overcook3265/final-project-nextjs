@@ -1,6 +1,8 @@
 // import { timeStamp } from 'node:console';
 import { Sql } from 'postgres';
+import { z } from 'zod';
 
+// TS type definition
 export type UserPost = {
   id: number;
   userId: number;
@@ -10,6 +12,17 @@ export type UserPost = {
   postTimestamp: Date;
   rating: number;
 };
+
+// Zod schema definition
+export const postSchema = z.object({
+  // id: z.number().min(1),
+  // userId: z.number().min(1),
+  postTitle: z.string().min(3),
+  postText: z.string().min(3),
+  isOpChanged: z.boolean(),
+  // postTimestamp: z.coerce.date(),
+  rating: z.number().min(1),
+});
 
 const timeStamp = new Date();
 const userPosts: UserPost[] = [

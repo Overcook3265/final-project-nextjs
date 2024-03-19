@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import { postSchema } from '../migrations/00002-createTablePosts';
 import { UserPost } from '../migrations/00003-insertPosts';
 import { sql } from './connect';
 
@@ -48,6 +49,52 @@ export const createPostInsecure = cache(
         post_timestamp,
         rating
     `;
+    return post;
+  },
+);
+
+export const createPost = cache(
+  async (
+    // TS argument definition
+    token: string,
+    postTitle: string,
+    postText: string,
+    isOpChanged: boolean,
+    // postTimestamp: number,
+    rating: number,
+  ) => {
+    const [post] = await sql<UserPost[]>`
+      -- change UserPost later, too many attributes (?)
+      INSERT INTO
+        posts (
+          -- id, NO!!!
+          user_id,
+          post_title,
+          post_text,
+          is_op_changed,
+          -- post_timestamp, automatically created
+          rating
+        ) (
+          -- this part here selects the user_id from sessions
+          -- it's a subquery, so all other variables need to be mentioned as well
+          -- because they already have their values that I want to use in post
+          SELECT
+            user_id,
+            ${postTitle},
+            ${postText},
+            ${isOpChanged},
+            ${rating}
+          FROM
+            sessions
+          WHERE
+            token = ${token}
+            AND sessions.expiry_timestamp > now()
+        )
+      RETURNING
+        -- this variable returns the newly added row
+        posts.*
+    `;
+
     return post;
   },
 );

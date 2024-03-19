@@ -1,4 +1,4 @@
-import Test from '../test';
+import Test from '../(parallax)/test';
 
 export default function Page() {
   return (
