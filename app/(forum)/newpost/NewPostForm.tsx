@@ -3,11 +3,11 @@ import { useState } from 'react';
 import styles from './page.module.scss';
 
 export default function NewPostForm() {
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [postText, setPostText] = useState('');
   const [isOpChanged, setIsOpChanged] = useState(false);
-  const [postTimestamp, setPostTimestamp] = useState('');
+  // const [postTimestamp, setPostTimestamp] = useState('');
   // careful: change useState if input is a number or boolean
   const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState<{ message: string }[]>([]);

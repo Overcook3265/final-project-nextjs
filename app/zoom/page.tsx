@@ -7,7 +7,7 @@ export default function Zoom() {
       <div className={styles.wrapper1}>
         <h1 className={styles.h1}>
           What colors do you see?
-          <div className={styles.sub}>Zoom and move around</div>
+          <div className={styles.sub}>Move around and zoom out when ready</div>
         </h1>
         <ZoomModule />
       </div>

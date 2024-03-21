@@ -18,6 +18,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow: scroll;
+}
+
+main {
+  padding-top: 3rem;
 }
 
 nav {

@@ -12,7 +12,7 @@ export default function ZoomModule() {
   useEffect(() => {
     const options = {
       maxScale: 100,
-      initScale: 25,
+      initScale: 10,
       minScale: 0.2,
       bounds: false,
       slider: true,

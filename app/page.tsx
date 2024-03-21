@@ -1,6 +1,7 @@
-// 'use client';
-
+import 'animate.css';
 import Image from 'next/image';
+// 'use client';
+import React, { useState } from 'react';
 import Cavemen from './(parallax)/cavemen';
 import Test from './(parallax)/test';
 import styles from './page.module.scss';
@@ -10,7 +11,9 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.wrapper1}>
         <div className={styles.wrapper2}>
-          <h1>What just happened?</h1>
+          <h1 className={`${styles.h1} animate__animated animate__fadeIn`}>
+            What just happened?
+          </h1>
           <form method="get" action="#explain">
             <button className={styles.button}>Explore</button>
           </form>
@@ -41,7 +44,9 @@ export default function Home() {
         </div>
         <hr />
         <div>
-          <h1 className={styles.h1}>What the brain does to the world</h1>
+          <h1 className={`${styles.h1} animate__animated animate__fadeIn`}>
+            What the brain does to the world
+          </h1>
 
           <img
             className={styles.imageright}
@@ -58,26 +63,15 @@ export default function Home() {
             <b>trapped, alone, in a thick, dark skull</b>.
             <br />
             <br />
+            <br />
             To survive, we <b>absolutely need to know</b> what is happening
             outside, and which of that is <b>relevant to our survival</b>.
             <br />
             <br />
-            {/* To survive, we <b>absolutely need to know</b> what is happening
-            outside, and which of that is <b>relevant to our survival</b>
             <br />
-            <br /> */}
-            So, priorities have to made, unimportant information ignored and a
-            world to move and survive in be constructed. What we perceive as
-            "vision" is more of an active hallucination by the brain, trying to
-            filter out what is relevant for us, and what isn't.
-            <br />
-            <br />
-            For vision, this image creation process involves around 30 steps.
-            <br />
-            <br />
-            This means, at any time, we are{' '}
-            <b>only perceiving a tiny sliver </b> of what could be called
-            "reality."
+            Hunter-gatherers who contemplated the beauty of rustling grass at
+            dusk - <b>and not what caused it</b> - were less likely to pass on
+            their genes, after all.
             <br />
             <br />
             <br />
@@ -87,28 +81,54 @@ export default function Home() {
             <br />
             <br />
             <br />
-            Kindling the energy hidden in matter made in the interiors of
-            collapsing stars finite but unbounded Orion's sword Cambrian
-            explosion vastness is bearable only through love. Dispassionate
-            extraterrestrial observer preserve and cherish that pale blue dot
-            Sea of Tranquility as a patch of light emerged into consciousness
-            cosmic ocean. The carbon in our apple pies descended from
-            astronomers the carbon in our apple pies hundreds of thousands are
-            creatures of the cosmos hundreds of thousands.
+            As a result, our brain became very good at recognizing patterns.
+            It's filtering as "noise" most sensory input which experience has
+            proven not to be relevant for us and our goals. This filtering
+            happens <b>unconsciously</b>, and helps to create a consistent - and
+            survivable - world for us.
             <br />
             <br />
-            Network of wormholes hearts of the stars something incredible is
-            waiting to be known shores of the cosmic ocean are creatures of the
-            cosmos Orion's sword? Tendrils of gossamer clouds how far away
-            citizens of distant epochs Tunguska event hundreds of thousands made
-            in the interiors of collapsing stars.
+            <br />
+            From the moment a photon his our eye to a full image created in our
+            mind, over 30 steps have to be taken. Plenty of opportunity for our
+            brain to filter and adjust so the final image is just "right".
             <br />
             <br />
-            Kindling the energy hidden in matter a mote of dust suspended in a
-            sunbeam the carbon in our apple pies the ash of stellar alchemy a
-            very small stage in a vast cosmic arena ship of the imagination and
-            billions upon billions upon billions upon billions upon billions
-            upon billions upon billions.
+            <br />
+            This means, at any given time, we are{' '}
+            <b>only perceiving a tiny sliver</b> of what could be called
+            "reality."
+            <br />
+            <br />
+            <br />
+            <h1 className={styles.h1}>Strawberries must. be. red.</h1>
+            <br />
+            <br />
+            <br />
+            The picture above beautifully demonstrates this filtering effect.
+            <br />
+            <br />
+            <br />
+            <br />
+            What we perceive as "reality" is more of an active hallucination by
+            the brain, trying to filter out what is relevant for us, and what
+            isn't.
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1 className={styles.h1}>Reality is not the same for everyone</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            In 2015,
+            <br />
+            <br />
+            Of course, there is such a thing as reality
           </div>
         </div>
       </div>

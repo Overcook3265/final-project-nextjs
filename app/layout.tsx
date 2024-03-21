@@ -34,7 +34,9 @@ export default function RootLayout({
             <LogoutButton />
           </nav>
         </header>
+        <main>
         <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

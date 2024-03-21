@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   // padding: 6rem;
-  min-height: 100vh;
+  height: 80vh;
 }
 
 .wrapper1 {
@@ -19,6 +19,7 @@
 .colorwrapper {
   background-color: var(--color-lapis);
   border-radius: 2rem;
+  max-width: 90vw;
 }
 
 .form {
@@ -74,7 +75,8 @@
 
 .textarea {
   // padding: 1rem;
-  width: 90vw;
+  min-width: 80vw;
+  max-width: 90vw;
 }
 
 // .description {
