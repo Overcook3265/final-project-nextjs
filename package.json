@@ -17,6 +17,7 @@
     "dotenv": "^16.4.5",
     "dotenv-safe": "^9.1.0",
     "final-project-nextjs": "link:",
+    "framer-motion": "^11.0.18",
     "next": "14.1.0",
     "postgres": "^3.4.3",
     "react": "^18",
