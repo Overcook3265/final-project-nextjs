@@ -67,10 +67,6 @@ export default function Home() {
           <br />
           <br />
           <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <hr />
           {/* One thing seems for sure: <br />
         The world that surrounds us is not what it seems. */}

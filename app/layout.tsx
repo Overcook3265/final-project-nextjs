@@ -1,14 +1,16 @@
 import './globals.scss';
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { getUser } from '../database/users';
 import LogoutButton from './(auth)/api/logout/LogoutButton';
 import { Providers } from './providers';
 
 const plex = IBM_Plex_Mono({
   weight: '400',
   subsets: ['latin'],
-  display: 'swap',
+  display: 'block',
 });
 
 export const metadata: Metadata = {
@@ -21,6 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const cookieStore = cookies();
+  // const sessionToken = cookieStore.get('sessionToken');
+
+  // // 2. Get the current logged in user from the database using the sessionToken value
+  // const user = sessionToken && (await getUser(sessionToken.value));
+
   return (
     <html lang="en" className="wrapper">
       <body className={plex.className}>
@@ -31,6 +39,7 @@ export default function RootLayout({
             <Link href="/register">Register</Link>
             <Link href="/login">Login</Link>
             <Link href="/newpost">New Post</Link>
+            <Link href="/forum">Forum</Link>
             <LogoutButton />
           </nav>
         </header>
