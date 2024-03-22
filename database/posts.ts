@@ -12,6 +12,21 @@ import { sql } from './connect';
 //   passwordHash: string;
 // };
 
+export const getPosts = cache(async (token: string) => {
+  const notes = await sql<UserPost[]>`
+    SELECT
+      posts.*
+    FROM
+      posts
+      INNER JOIN sessions ON (
+        sessions.token = ${token}
+        AND posts.user_id = sessions.user_id
+        AND sessions.expiry_timestamp > now()
+      )
+  `;
+  return notes;
+});
+
 export const createPostInsecure = cache(
   async (
     userId: string,
@@ -76,7 +91,7 @@ export const createPost = cache(
           rating
         ) (
           -- this part here selects the user_id from sessions
-          -- it's a subquery, so all other variables need to be mentioned as well
+          -- it's a sub-query, so all other variables need to be mentioned as well
           -- because they already have their values that I want to use in post
           SELECT
             user_id,
