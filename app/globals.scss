@@ -41,6 +41,19 @@ nav > * {
   margin: 1rem;
 }
 
+nav > div {
+  // border-style: solid;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+nav > div > * {
+  margin: 1rem;
+}
+
 h1 {
   font-weight: 200;
   margin-top: 1.75rem;

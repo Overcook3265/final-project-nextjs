@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import Cavemen from './(parallax)/cavemen';
 import Test from './(parallax)/test';
 import styles from './page.module.scss';
+import ZoomModule from './zoom/ZoomModule';
 
 function Section({ children }) {
   const ref = useRef(null);
@@ -31,6 +32,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.wrapper1}>
         <div className={styles.wrapper2}>
+          {/* <ZoomModule /> */}
           <h1 className={`${styles.h1} animate__animated animate__fadeInUp`}>
             What just happened?
           </h1>

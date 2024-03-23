@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-export default async function LoginPage({ searchParams }: Props) {
+export default async function NewPostPage({ searchParams }: Props) {
   // Task: Add redirect to home if user is logged in
 
   // 1. Checking if the sessionToken cookie exists
