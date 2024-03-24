@@ -32,7 +32,12 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
 
   // get the posts
   const posts = await getPosts(sessionTokenCookie.value);
-  // console.log('Length: ', posts.length);
+  // console.log(posts);
+
+  function formatDate(date) {
+    const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
+    return date.toLocaleDateString(undefined, options);
+  }
 
   return (
     <main className={styles.main}>
@@ -53,7 +58,7 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
               <NewPostButton />
             </div>
             <div className={styles.allpostswrapper}>
-              <div className={styles.singlepost}>
+              {/* <div className={styles.singlepost}>
                 <div className={styles.singleposttitle}>
                   Talk with family members about immigration
                 </div>
@@ -62,7 +67,7 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
                   <br />
                   on 07/04/2024
                 </div>
-              </div>
+              </div> */}
               {posts.length === 0 ? (
                 'No posts yet'
               ) : (
@@ -73,9 +78,9 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
                         {post.postTitle}
                       </div>
                       <div className={styles.singlepostinfo}>
-                        by {post.userId}
+                        by {post.username}
                         <br />
-                        on 07/04/2024
+                        on {formatDate(post.postTimestamp)}
                       </div>
                     </div>
                   ))}

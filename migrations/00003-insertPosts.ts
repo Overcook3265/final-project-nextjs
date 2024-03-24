@@ -11,6 +11,7 @@ export type UserPost = {
   isOpChanged: boolean;
   postTimestamp: Date;
   rating: number;
+  username: string;
 };
 
 // Zod schema definition
@@ -34,6 +35,7 @@ const userPosts: UserPost[] = [
     isOpChanged: true,
     postTimestamp: timeStamp,
     rating: 7,
+    username: 'kitten-canoodle',
   },
 ];
 
@@ -58,6 +60,16 @@ export async function up(sql: Sql) {
           ${userPost.postTimestamp},
           ${userPost.rating}
         )
+    `;
+  }
+}
+
+export async function down(sql: Sql) {
+  for (const userPost of userPosts) {
+    await sql`
+      DELETE FROM posts
+      WHERE
+        id = ${userPost.id}
     `;
   }
 }

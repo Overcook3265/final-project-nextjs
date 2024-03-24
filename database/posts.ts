@@ -15,7 +15,8 @@ import { sql } from './connect';
 export const getPosts = cache(async (token: string) => {
   const notes = await sql<UserPost[]>`
     SELECT
-      posts.*
+      posts.*,
+      users.username
     FROM
       posts
       INNER JOIN sessions ON (
@@ -23,7 +24,9 @@ export const getPosts = cache(async (token: string) => {
         AND posts.user_id = sessions.user_id
         AND sessions.expiry_timestamp > now()
       )
+      INNER JOIN users ON users.id = posts.user_id
   `;
+  console.log('Database-Test New: ', notes);
   return notes;
 });
 
