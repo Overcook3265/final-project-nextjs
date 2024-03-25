@@ -13,7 +13,7 @@ import { sql } from './connect';
 // };
 
 export const getPosts = cache(async (token: string) => {
-  const notes = await sql<UserPost[]>`
+  const posts = await sql<UserPost[]>`
     SELECT
       posts.*,
       users.username
@@ -26,8 +26,28 @@ export const getPosts = cache(async (token: string) => {
       )
       INNER JOIN users ON users.id = posts.user_id
   `;
-  console.log('Database-Test New: ', notes);
-  return notes;
+  // console.log('Database-Test New: ', posts);
+  return posts;
+});
+
+export const getPost = cache(async (token: string, postId: number) => {
+  const [post] = await sql<UserPost[]>`
+    SELECT
+      posts.*,
+      users.username
+    FROM
+      posts
+      INNER JOIN sessions ON (
+        sessions.token = ${token}
+        AND posts.user_id = sessions.user_id
+        AND sessions.expiry_timestamp > now()
+      )
+      INNER JOIN users ON users.id = posts.user_id
+    WHERE
+      posts.id = ${postId}
+  `;
+  // console.log('Database-Test New: ', post);
+  return post;
 });
 
 export const createPostInsecure = cache(
