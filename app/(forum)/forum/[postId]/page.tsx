@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { getPost } from '../../../../database/posts';
 import { getValidSession } from '../../../../database/sessions';
 import { UserPost } from '../../../../migrations/00003-insertPosts';
@@ -10,19 +11,20 @@ import styles from './page.module.scss';
 
 type Props = {
   posts: UserPost[];
-  // params: {
-  //   noteId: string;
-  // };
+  params: {
+    postId: number;
+  };
   searchParams: {
     returnTo?: string | string[];
+    postId: number;
   };
 };
 
-export default async function ForumPage(
-  { searchParams }: Props,
-  // { params }: Props,
-  props: Props,
-) {
+export default async function ForumPage({
+  searchParams,
+  params,
+  posts,
+}: Props) {
   // Task: Add redirect to home if user is logged in
   // 1. Checking if the sessionToken cookie exists
   const sessionTokenCookie = cookies().get('sessionToken');
@@ -36,8 +38,10 @@ export default async function ForumPage(
   if (!session) redirect(getSafeReturnToPath(searchParams.returnTo) || '/');
 
   // get the posts
+
   const post =
-    sessionTokenCookie && (await getPost(sessionTokenCookie.value, 4));
+    sessionTokenCookie &&
+    (await getPost(sessionTokenCookie.value, params.postId));
   // HERE IS the issue: The NUMBER is UNDEFINED
   // console.log(post);
 
@@ -53,39 +57,23 @@ export default async function ForumPage(
           <h1>Notes of Encounters</h1>
           <div className={styles.colorwrapper}>
             <div className={styles.toppostwrapper}>
-              <div>Post Title</div>
+              <div>{post.postTitle}</div>
               <div className={styles.singlepostinfo}>
-                {/* by {post.username} */}
-                by Username
+                by {post.username}
                 <br />
-                {/* on {formatDate(post.postTimestamp)} */}
-                on Date
+                on {formatDate(post.postTimestamp)}
+                {/* on Date */}
               </div>
             </div>
             <div className={styles.allpostswrapper}>
-              {/* <div className={styles.singlepost}>
-                <div className={styles.singleposttitle}>
-                  Talk with family members about immigration
-                </div>
-                <div className={styles.singlepostinfo}>
-                  by kitten-canoodle
-                  <br />
-                  on 07/04/2024
-                </div>
-              </div> */}
-              {/* <div className={styles.singleposttitle}>Post Title</div> */}
-
-              <div className={styles.singlepost}>
-                This is the text of the single post! It should contain an
-                interesting story for others to comment on.
-              </div>
+              <div className={styles.singlepost}>{post.postText}</div>
             </div>
             <div className={styles.bottompostwrapper}>
-              <div>Encounter-Rating: 7/10</div>
+              <div>Encounter-Rating: {post.rating}/10</div>
 
               <div className={styles.singlepostinfo}>
                 {/* by {post.username} */}
-                Opinions changed: Yes
+                Opinions changed: {post.isOpChanged}
               </div>
             </div>
           </div>
