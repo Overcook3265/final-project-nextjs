@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { UserPost } from '../../../00003-insertPosts_old';
 import { getPosts } from '../../../database/posts';
 import { getValidSession } from '../../../database/sessions';
-import { UserPost } from '../../../migrations/00003-insertPosts';
 import { getSafeReturnToPath } from '../../util/validation';
 import NewPostButton from './NewPostButton';
 import styles from './page.module.scss';
@@ -35,8 +35,16 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
   const posts = await getPosts(sessionTokenCookie.value);
   // console.log(posts);
 
-  function formatDate(date) {
-    const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
+  function formatDate(
+    date: Date | undefined,
+    defaultValue: string = 'N/A',
+  ): string {
+    if (!date) return defaultValue; // Handle undefined case
+    const options: Intl.DateTimeFormatOptions = {
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+    };
     return date.toLocaleDateString(undefined, options);
   }
 
@@ -45,7 +53,7 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
       <div className={styles.wrapper1}>
         <div className={styles.topwrapperpage}>
           <h1>Notes of Encounters</h1>
-          <div className={styles.textcenter}>
+          <div className={styles.textarea}>
             The purpose of this forum is to exchange experiences of encounters
             with other people of different mindsets and mental filters. <br />
             <br />

@@ -76,14 +76,16 @@ export async function POST(
 
   // 6. Create the session record
   const session = await createSessionInsecure(userWithPasswordHash.id, token);
-  console.log('Session: ', session);
+  // console.log('Session: ', session);
 
   // console.log('Token: ', token);
-  cookies().set({
-    name: 'sessionToken',
-    value: session.token,
-    ...secureCookieOptions,
-  });
+  if (session) {
+    cookies().set({
+      name: 'sessionToken',
+      value: session.token,
+      ...secureCookieOptions,
+    });
+  }
 
   return NextResponse.json({
     user: {

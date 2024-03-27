@@ -2,10 +2,10 @@ import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
+import { postSchema, UserPost } from '../../../../00003-insertPosts_old';
 import { createPost, createPostInsecure } from '../../../../database/posts';
 import { createSessionInsecure } from '../../../../database/sessions';
 import { userSchema } from '../../../../migrations/00000-createTableUsers';
-import { postSchema, UserPost } from '../../../../migrations/00003-insertPosts';
 import { secureCookieOptions } from '../../../util/cookies';
 
 // define type

@@ -18,6 +18,7 @@ export default async function LoginPage({ searchParams }: Props) {
   const sessionTokenCookie = cookies().get('sessionToken');
 
   // 2. Check if the sessionToken cookie is still valid
+
   const session =
     sessionTokenCookie && (await getValidSession(sessionTokenCookie.value));
 
