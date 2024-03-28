@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { postSchema, UserPost } from '../../../../00003-insertPosts_old';
+import { postSchema, UserPost } from '../../../../00003-insertPosts';
 import { createPost, createPostInsecure } from '../../../../database/posts';
 import { createSessionInsecure } from '../../../../database/sessions';
 import { userSchema } from '../../../../migrations/00000-createTableUsers';

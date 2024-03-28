@@ -35,7 +35,7 @@ export default async function RootLayout({
       <body className={plex.className}>
         <header>
           <nav>
-            <Link href="/zoom">Zoom</Link>
+            {/* <Link href="/zoom">Zoom</Link> */}
             <Link href="/">Home</Link>
             <div>
               {user ? (

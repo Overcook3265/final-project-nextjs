@@ -32,13 +32,32 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.wrapper1}>
         <div className={styles.wrapper2}>
-          {/* <ZoomModule /> */}
-          <h1 className={`${styles.h1} animate__animated animate__fadeInUp`}>
-            What just happened?
+          <h1 className={styles.h1zoomer}>
+            These strawberries <br /> are NOT red.
+            <div className={styles.subzoomer}>Zoom in to see the Truth</div>
           </h1>
-          <form method="get" action="#explain">
+          <ZoomModule />
+          {/* <div
+            className={`${styles.textcenter} animate__animated animate__fadeInUp`}
+          > */}
+          <div className={styles.findout}>
+            Scroll down to find out what's going on here.
+            <div>
+              {/* <img
+                className={styles.arrowcenter}
+                src={`/images/arrow_white.png`}
+                alt="Down arrow"
+                width={0}
+                height={0}
+                sizes="5vw"
+                style={{ width: '20%', height: 'auto' }} // optional
+              /> */}
+            </div>
+          </div>
+          {/* </div> */}
+          {/* <form method="get" action="#explain">
             <button className={styles.button}>Explore</button>
-          </form>
+          </form> */}
         </div>
       </div>
       <div className={styles.wrapper3}>
@@ -55,8 +74,7 @@ export default function Home() {
           <br />
           <br />
           <br />
-          And yet, the strawberries - once recognized - clearly appear to be
-          red. How can this be?
+          And yet, the strawberries clearly appear to be red. How can this be?
           <br />
           <br />
           <br />
@@ -81,7 +99,7 @@ export default function Home() {
             <img
               className={styles.imageright}
               src={`/images/brain_lineart_white.png`}
-              alt="Demonstration of visual filtering"
+              alt="Line-art of human brain"
               width={0}
               height={0}
               sizes="20vw"

@@ -1,4 +1,4 @@
-import { setEnvironmentVariables } from './app/util/config.js';
+import { setEnvironmentVariables } from './config.js';
 
 setEnvironmentVariables();
 

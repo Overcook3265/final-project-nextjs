@@ -1,6 +1,6 @@
 import { cache } from 'react';
 // import { postSchema } from '../migrations/00002-createTablePosts';
-import { UserPost } from '../00003-insertPosts_old';
+import { UserPost } from '../00003-insertPosts';
 import { sql } from './connect';
 
 // export type User = {

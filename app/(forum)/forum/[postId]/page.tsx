@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { UserPost } from '../../../../00003-insertPosts_old';
+import { UserPost } from '../../../../00003-insertPosts';
 import { getPost } from '../../../../database/posts';
 import { getValidSession } from '../../../../database/sessions';
 import { getSafeReturnToPath } from '../../../util/validation';

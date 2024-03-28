@@ -10,9 +10,9 @@ import styles from './page.module.scss';
 
 export default function ZoomModule() {
   useEffect(() => {
-    const options = {
+    const options: ZoomistOptions = {
       maxScale: 100,
-      initScale: 30,
+      initScale: 1,
       minScale: 0.2,
       bounds: false,
       slider: true,
