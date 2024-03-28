@@ -64,6 +64,9 @@
   font-size: small;
   color: var(--color-black);
   font-weight: normal;
+  animation: show 0s both;
+  animation-delay: 2s;
+  animation-duration: 2s;
   // animation: color_change 2s 1 cubic-bezier(0.075, 0.82, 0.165, 1);
   // color: white;
 }
@@ -73,7 +76,7 @@
   align-items: center;
   flex-direction: column;
   animation: show 0s both;
-  animation-delay: 0s;
+  animation-delay: 5s;
   animation-duration: 2s;
   text-align: center;
   width: 60vw;

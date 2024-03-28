@@ -15,8 +15,8 @@ export default function ZoomModule() {
       initScale: 1,
       minScale: 0.2,
       bounds: false,
-      slider: true,
-      zoomer: true,
+      // slider: true,
+      // zoomer: true,
     };
     new Zoomist('.zoomist-container', options);
   }, []);
