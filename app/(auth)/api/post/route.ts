@@ -5,10 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createPost, createPostInsecure } from '../../../../database/posts';
 import { createSessionInsecure } from '../../../../database/sessions';
 import { userSchema } from '../../../../migrations/00000-createTableUsers';
-import {
-  postSchema,
-  UserPost,
-} from '../../../../migrations/00002-createTablePosts';
+import { postSchema, UserPost } from '../../../../migrations/00003-insertPosts';
 import { secureCookieOptions } from '../../../util/cookies';
 
 // define type
