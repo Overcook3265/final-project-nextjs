@@ -5,7 +5,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createPost, createPostInsecure } from '../../../../database/posts';
 import { createSessionInsecure } from '../../../../database/sessions';
 import { userSchema } from '../../../../migrations/00000-createTableUsers';
-import { postSchema, UserPost } from '../../../../migrations/00003-insertPosts';
+// change for deployment
+// import { postSchema, UserPost } from '../../../../migrations/00003-insertPosts';
+import {
+  postSchema,
+  UserPost,
+} from '../../../../migrations/00002-createTablePosts';
 import { secureCookieOptions } from '../../../util/cookies';
 
 // define type
@@ -28,11 +33,11 @@ export async function POST(
   // NextRequest, Promise, NextResponse = predefined TS standard types
   // 1. Get the user data from the request
   const body = await request.json();
-  console.log(body);
+  // console.log(body);
 
   // 2. Validate the user data with zod
   const result = postSchema.safeParse(body);
-  console.log(result);
+  // console.log(result);
 
   // // console.log('Error: ', result.error.issues);
 

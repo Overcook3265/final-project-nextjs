@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { UserPost } from '../../../00003-insertPosts';
+import { UserPost } from '../../../00003-insertPosts_old';
 import { getPosts } from '../../../database/posts';
 import { getValidSession } from '../../../database/sessions';
 import { getSafeReturnToPath } from '../../util/validation';
@@ -81,7 +81,7 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
                 'No posts yet'
               ) : (
                 <>
-                  {posts.map((post) => (
+                  {posts.reverse().map((post) => (
                     <Link
                       key={`post-${post.id}`}
                       href={`/forum/${post.id}`}

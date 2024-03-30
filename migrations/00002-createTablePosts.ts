@@ -11,9 +11,20 @@ export type UserPost = {
   rating: number;
   username: string;
 };
+// obsolete:
+// export const postSchema = z.object({
+//   rating: z.number().max(10),
+// });
 
+// copied here for deployment:
 export const postSchema = z.object({
-  rating: z.number().max(10),
+  // id: z.number().min(1),
+  // userId: z.number().min(1),
+  postTitle: z.string().min(3),
+  postText: z.string().min(3),
+  isOpChanged: z.boolean(),
+  // postTimestamp: z.coerce.date(),
+  rating: z.number().min(1),
 });
 
 export async function up(sql: Sql) {
