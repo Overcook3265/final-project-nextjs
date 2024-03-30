@@ -48,35 +48,39 @@ export default function RegisterForm(props: Props) {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper1}>
-        <h1 className={styles.title}>Register here</h1>
-        <form
-          onSubmit={async (event) => await handleRegister(event)}
-          className={styles.form}
-        >
-          <label>
-            <input
-              className={styles.input}
-              onChange={(event) => setUsername(event.currentTarget.value)}
-            />
-            Username
-          </label>
-          <br />
-          <label>
-            <input
-              type="password"
-              className={styles.input}
-              onChange={(event) => setPassword(event.currentTarget.value)}
-            />
-            Password
-          </label>
-          <br />
-          <button className={styles.button}>Register</button>
-          {errors.map((error) => (
-            <div className="error" key={`error-${error.message}`}>
-              <ErrorMessage>{error.message}</ErrorMessage>
-            </div>
-          ))}
-        </form>
+        <div className={styles.wrapper2}>
+          <div className={styles.wrapper3}>
+            <form
+              onSubmit={async (event) => await handleRegister(event)}
+              className={styles.form}
+            >
+              <h1>Register here</h1>
+              <label>
+                <input
+                  className={styles.input}
+                  onChange={(event) => setUsername(event.currentTarget.value)}
+                />
+                Username
+              </label>
+              <br />
+              <label>
+                <input
+                  type="password"
+                  className={styles.input}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
+                />
+                Password
+              </label>
+              <br />
+              <button className={styles.button}>Register</button>
+              {errors.map((error) => (
+                <div className="error" key={`error-${error.message}`}>
+                  <ErrorMessage>{error.message}</ErrorMessage>
+                </div>
+              ))}
+            </form>
+          </div>
+        </div>
       </div>
     </main>
   );

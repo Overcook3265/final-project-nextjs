@@ -14,6 +14,27 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  // border-style: solid;
+}
+
+.wrapper2 {
+  height: 60vw;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // border-style: solid;
+}
+
+.wrapper3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 .form {
@@ -23,11 +44,14 @@
   // border-color: green;
   // border-style: solid;
   text-align: center;
+  // border-style: solid;
+  // padding: 1rem;
 }
 
 .input {
   // padding: 1rem;
-  margin-right: 1rem;
+
+  margin: 0.5rem;
 }
 
 .form > * {

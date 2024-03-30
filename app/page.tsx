@@ -41,7 +41,7 @@ export default function Home() {
             className={`${styles.textcenter} animate__animated animate__fadeInUp`}
           > */}
           <div className={styles.findout}>
-            Scroll down to find out what's going on here.
+            Find out below what's going on here.
             <div>
               {/* <img
                 className={styles.arrowcenter}

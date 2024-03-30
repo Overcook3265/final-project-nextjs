@@ -1,6 +1,17 @@
 import { Sql } from 'postgres';
 import { z } from 'zod';
 
+export type UserPost = {
+  id: number;
+  userId: number;
+  postTitle: string;
+  postText: string;
+  isOpChanged: boolean;
+  postTimestamp: Date;
+  rating: number;
+  username: string;
+};
+
 export const postSchema = z.object({
   rating: z.number().max(10),
 });
