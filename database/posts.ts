@@ -21,7 +21,7 @@ export const getPosts = cache(async (token: string) => {
       posts
       INNER JOIN sessions ON (
         sessions.token = ${token}
-        AND posts.user_id = sessions.user_id
+        -- AND posts.user_id = sessions.user_id
         AND sessions.expiry_timestamp > now()
       )
       INNER JOIN users ON users.id = posts.user_id
@@ -39,7 +39,7 @@ export const getPost = cache(async (token: string, postId: number) => {
       posts
       INNER JOIN sessions ON (
         sessions.token = ${token}
-        AND posts.user_id = sessions.user_id
+        -- AND posts.user_id = sessions.user_id
         AND sessions.expiry_timestamp > now()
       )
       INNER JOIN users ON users.id = posts.user_id
