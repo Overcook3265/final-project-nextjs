@@ -4,6 +4,14 @@
   aspect-ratio: 8/1;
 }
 
+@media (width <= 480px) {
+  .caveman {
+    border-style: solid;
+    width: 10rem;
+    aspect-ratio: 2/1;
+  }
+}
+
 .box {
   width: 100px;
   height: 100px;

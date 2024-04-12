@@ -13,7 +13,7 @@ export default function ZoomModule() {
     const options: ZoomistOptions = {
       maxScale: 100,
       initScale: 1,
-      minScale: 0.2,
+      minScale: 1,
       bounds: false,
       slider: true,
       // zoomer: true,
@@ -29,6 +29,7 @@ export default function ZoomModule() {
             // className={styles.image}
             src={`/images/Strawberries.png`}
             alt="Demonstration of visual filtering"
+            
             // width={0}
             // height={0}
             // sizes="100vw"

@@ -45,6 +45,7 @@ export default async function RootLayout({
                 </>
               ) : (
                 <>
+                  {/* <Link href="/forum">Forum</Link> */}
                   <Link href="/register">Register</Link>
                   <Link href="/login">Login</Link>
                 </>

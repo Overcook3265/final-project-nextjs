@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { UserPost } from '../../../00003-insertPosts_old';
 import { getPosts } from '../../../database/posts';
 import { getValidSession } from '../../../database/sessions';
+import { getUser } from '../../../database/users';
 import { getSafeReturnToPath } from '../../util/validation';
 import NewPostButton from './NewPostButton';
 import styles from './page.module.scss';
@@ -48,6 +49,10 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
     return date.toLocaleDateString(undefined, options);
   }
 
+  const cookieStore = cookies();
+  const sessionToken = cookieStore.get('sessionToken');
+  const user = sessionToken && (await getUser(sessionToken.value));
+
   return (
     <main className={styles.main}>
       <div className={styles.wrapper1}>
@@ -64,7 +69,11 @@ export default async function ForumPage({ searchParams }: Props, props: Props) {
           <div className={styles.colorwrapper}>
             <div className={styles.newpostwrapper}>
               <div>Posts</div>
-              <NewPostButton />
+              {user ? (
+                <NewPostButton />
+              ) : (
+                <div>Please log in to create a post</div>
+              )}
             </div>
             <div className={styles.allpostswrapper}>
               {/* <div className={styles.singlepost}>

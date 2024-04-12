@@ -16,6 +16,10 @@
   padding: 0;
 }
 
+section {
+  display: block;
+}
+
 html {
   scroll-behavior: smooth;
   overflow: scroll;
@@ -94,6 +98,29 @@ a:hover {
   display: flex;
 }
 
+.zoomist-slider-wrapper {
+  width: 15vw !important;
+}
+
+@media (width <= 480px) {
+  .zoomist-container {
+    width: 90vw;
+    height: 90vw;
+    border-style: solid;
+    border-color: var(--color-white);
+    display: flex;
+    --zoomist-slider-button-size: 20px;
+  }
+
+  .zoomist-slider-wrapper {
+    width: 80vw !important;
+  }
+  .zoomist-slider-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
 .zoomist-image {
   width: 100%;
   aspect-ratio: 1;
@@ -115,6 +142,16 @@ a:hover {
   object-fit: cover;
   // border-style: solid;
   // border-color: green;
+}
+
+.zoomist-slider {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding: var(--zoomist-slider-padding-y) var(--zoomist-slider-padding-x);
+
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 @keyframes show {

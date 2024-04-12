@@ -53,7 +53,7 @@ export async function POST(
     );
   }
 
-  console.log(userWithPasswordHash);
+  // console.log(userWithPasswordHash);
 
   // 4. Validate the user password by comparing with hashed password
   const isPasswordValid = await bcrypt.compare(

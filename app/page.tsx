@@ -16,9 +16,9 @@ function Section({ children }) {
     <section ref={ref}>
       <span
         style={{
-          transform: isInView ? 'none' : 'translateX(-200px)',
+          transform: isInView ? 'none' : 'translateY(50px)',
           opacity: isInView ? 1 : 0,
-          transition: 'all 5s cubic-bezier(0.17, 0.55, 0.55, 1) 1s',
+          transition: 'all 1s cubic-bezier(0.17, 0.55, 0.55, 1) 1s',
         }}
       >
         {children}
@@ -33,26 +33,18 @@ export default function Home() {
       <div className={styles.wrapper1}>
         <div className={styles.wrapper2}>
           <h1 className={styles.h1zoomer}>
-            These strawberries <br /> are NOT red.
-            <div className={styles.subzoomer}>Zoom in to see the Truth</div>
+            This image has NO red pixels
+            <div className={styles.subzoomer}>
+              Zoom in to check for yourself
+            </div>
           </h1>
           <ZoomModule />
+
           {/* <div
             className={`${styles.textcenter} animate__animated animate__fadeInUp`}
           > */}
           <div className={styles.findout}>
             Find out below what's going on here.
-            <div>
-              {/* <img
-                className={styles.arrowcenter}
-                src={`/images/arrow_white.png`}
-                alt="Down arrow"
-                width={0}
-                height={0}
-                sizes="5vw"
-                style={{ width: '20%', height: 'auto' }} // optional
-              /> */}
-            </div>
           </div>
           {/* </div> */}
           {/* <form method="get" action="#explain">
@@ -82,19 +74,15 @@ export default function Home() {
           <br />
           <br />
           <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <hr />
+          <br />
+          <br />
+          <br />
+          <br />
           {/* One thing seems for sure: <br />
         The world that surrounds us is not what it seems. */}
         </div>
         <div>
-          <Section>
-            <h1 className={styles.h1}>What the brain does to the world</h1>
-          </Section>
           <Section>
             <img
               className={styles.imageright}
@@ -102,9 +90,12 @@ export default function Home() {
               alt="Line-art of human brain"
               width={0}
               height={0}
-              sizes="20vw"
-              style={{ width: '20vw', height: 'auto' }} // optional
+              // sizes="(max-width: 480px) 10vw, 33vw"
+              style={{ width: '30vw', height: 'auto' }} // optional
             />
+          </Section>
+          <Section>
+            <h1 className={styles.h1}>What the brain does to the world</h1>
           </Section>
           <div className={styles.textleft}>
             <Section>
@@ -129,36 +120,57 @@ export default function Home() {
             </Section>
             <br />
             <br />
+            <Cavemen />
             <br />
             <br />
             <Section>
-              <Cavemen />
+              As a result, our brain became very good at recognizing patterns.
+              It's filtering as "noise" most sensory input which experience has
+              proven not to be relevant for us and our goals. This filtering
+              happens <b>unconsciously</b>, and helps to create a consistent -
+              and survivable - world for us.
+            </Section>
+            <br />
+            <br />
+            <br />
+            <Section>
+              From the moment a photon his our eye to a full image created in
+              our mind, over 30 steps have to be taken. Plenty of opportunity
+              for our brain to filter and adjust so the final image is just
+              "right".
+            </Section>
+            <br />
+            <br />
+            <br />
+            <Section>
+              This means, at any given time, we are{' '}
+              <b>only perceiving a tiny sliver</b> of what could be called
+              "reality."
             </Section>
             <br />
             <br />
             <br />
             <br />
-            As a result, our brain became very good at recognizing patterns.
-            It's filtering as "noise" most sensory input which experience has
-            proven not to be relevant for us and our goals. This filtering
-            happens <b>unconsciously</b>, and helps to create a consistent - and
-            survivable - world for us.
             <br />
             <br />
             <br />
-            From the moment a photon his our eye to a full image created in our
-            mind, over 30 steps have to be taken. Plenty of opportunity for our
-            brain to filter and adjust so the final image is just "right".
+            <hr />
             <br />
             <br />
             <br />
-            This means, at any given time, we are{' '}
-            <b>only perceiving a tiny sliver</b> of what could be called
-            "reality."
             <br />
-            <br />
-            <br />
-            <h1 className={styles.h1}>Strawberries must. be. red.</h1>
+            <Section>
+              <img
+                className={styles.imageright}
+                src={`/images/strawberry_white.png`}
+                alt="Line-art of human brain"
+                width={0}
+                height={0}
+                // sizes="(max-width: 480px) 10vw, 33vw"
+                style={{ width: '15vw', height: 'auto' }} // optional
+              />
+              <h1 className={styles.h1}>Strawberries must. be. red.</h1>
+            </Section>
             <br />
             <br />
             <br />
